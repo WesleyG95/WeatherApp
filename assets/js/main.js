@@ -7,7 +7,6 @@
 		var sunrise = new Date(responseJSONData.sys.sunrise*1000);
 		var sunset = new Date(responseJSONData.sys.sunset*1000);
 		
-		
 		//add temperature to the document
 		document.getElementById("temp").innerHTML = temp + "&deg; F";
 		
@@ -43,10 +42,24 @@
 		document.getElementById("desc").innerHTML = responseJSONData.weather[0].description;
 		
 		//add sunrise time to the document
-		document.getElementById("sunrise").innerHTML += sunrise.getHours() + ":" + sunrise.getMinutes();
+		if(sunrise.getMinutes() < 10)
+		{
+			document.getElementById("sunrise").innerHTML += sunrise.getHours() + ":0" + sunrise.getMinutes();
+		}
+		else
+		{
+			document.getElementById("sunrise").innerHTML += sunrise.getHours() + ":" + sunrise.getMinutes();
+		}
 		
 		//add sunset time to the document
-		document.getElementById("sunset").innerHTML += sunset.getHours() + ":" + sunset.getMinutes();
+		if(sunset.getMinutes() < 10)
+		{
+			document.getElementById("sunset").innerHTML += sunset.getHours() + ":0" + sunset.getMinutes();
+		}
+		else
+		{
+			document.getElementById("sunset").innerHTML += sunset.getHours() + ":" + sunset.getMinutes();
+		}
 		
 	}
 	
